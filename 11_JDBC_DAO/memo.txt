@@ -1,0 +1,20 @@
+
+	create sequence e_num
+		increment by 1
+		start with 1 
+		minvalue 1
+		maxvalue 10000
+		nocache;
+
+drop table emart;
+create table emart(
+num number(10),
+id varchar2(10) ,
+pw varchar2(10) ,
+product varchar2(20) ,
+time varchar2(30) ,
+approve varchar2(20),
+agree varchar2(20)
+);
+insert into emart values(e_num.nextval,'이예지','1234','의류','11시~1시','카드','동의');
+insert into emart values(e_num.nextval,'김우빈','5678','도서','9시~11시','핸드폰','비동의');

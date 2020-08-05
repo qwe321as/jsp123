@@ -1,0 +1,19 @@
+create sequence seyeon(
+start whit 1
+increment by 1
+minvalue 1
+order
+);
+
+drop table yeon;
+create table yeon(
+id varchar2(10) primary key,
+name varchar2(10),
+book varchar2(20),
+BIRTH date default sysdate
+);
+
+insert into yeon values(1,'이예지','자존감수업','1998.1.21');
+insert into yeon values(seyeon.nextval,'김우빈','어린왕자','1987.7.16');
+insert into yeon values(seyeon.nextval,'신민아','돈의속성','1984/4/20');
+insert into yeon values(seyeon.nextval,'유재석','초집중','1972/8/14');

@@ -1,0 +1,19 @@
+memo.txt
+create table member( 21 8/3
+id varchar2(12) primary key,
+passwd varchar2(12) not null,
+passwd varchar2(10) not null,
+reg_date date default sysdate
+);
+insert into member values('iu', 111, '아이유', '20.3.20');
+insert into member values('suji', 222, '수지', '09.12.3');
+
+JDBC 작성순서
+0:JAR화일포함 (WebContent->WEB-INF->lib안에 넣기)
+1:드라이버 로드Class.forName(~~)
+2:계정에 접속  DriverMeanager.getConnection(a,b,c);
+3:SQL분석conn.prepareStatement(sql);
+4:?(위치홀더)에 값 채워넣기
+5:실행(select:executeQuery,
+insert update delete:executeUpdate)
+6.끊기:close()
