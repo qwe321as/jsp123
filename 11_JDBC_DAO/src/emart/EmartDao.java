@@ -67,9 +67,16 @@ public class EmartDao {
 				}catch(Exception e) {
 				}
 			}
+		System.out.println("arraylist : "+ list.size());
 		return list;
 	}
 	public int insertData(EmartBean bean) {
+		System.out.println(bean.getId());
+		System.out.println(bean.getPw());
+		System.out.println(bean.getProduct());
+		System.out.println(bean.getTime());
+		System.out.println(bean.getAgree());
+		System.out.println(bean.getApprove());
 		getcon();
 		int cnt =-1;
 		String sql = "insert into emart values(e_num.nextval,?,?,?,?,?,?)";
@@ -101,6 +108,7 @@ public class EmartDao {
 			}catch(Exception e) {
 			}
 		}
+		System.out.println("cnt "+cnt);
 		return cnt;
 	}
 	public int deleteData(int num) {
@@ -110,6 +118,7 @@ public class EmartDao {
 		try {
 			ps =con.prepareStatement(sql);
 			ps.setInt(1, num);
+			cnt = ps.executeUpdate();
 		} catch (SQLException e) {
 		}finally {
 			try {
@@ -136,30 +145,31 @@ public class EmartDao {
 		EmartBean bean = null;
 		try {
 			ps=con.prepareStatement(sql);
-			ps.setInt(1, bean.getNum());
+			ps.setInt(1, num);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
+				int num2 = rs.getInt("num");
 				String id = rs.getString("id");
 				String pw = rs.getString("pw");
 				String product = rs.getString("product");
 				String time = rs.getString("time");
 				String approve = rs.getString("approve");
 				String agree = rs.getString("agree");
-				
+
 				bean = new EmartBean();
 				
-				bean.setNum(num);
+				bean.setNum(num2);
 				bean.setId(id);
 				bean.setPw(pw);
 				bean.setProduct(product);
 				bean.setTime(time);
 				bean.setApprove(approve);
 				bean.setAgree(agree);
-				
+
 			}
 		}catch(Exception e) {
-			
+
 		}finally {
 			try{
 				if(rs!=null)
@@ -178,49 +188,56 @@ public class EmartDao {
 	public int updateData(EmartBean bean) {
 		int cnt=-1;
 		getcon();
-		String sql = "update emart set pw =?, product=? , time=?, approve=?,agree=? where num=?";
+		String sql = "update emart set id=?, pw =?, product=? , time=?, approve=?,agree=? where num=?";
 		try{
-		ps = con.prepareStatement(sql);
-		ps.setString(1, bean.getPw());
-		ps.setString(2, bean.getProduct());
-		ps.setString(3, bean.getTime());
-		ps.setString(4, bean.getApprove());
-		ps.setString(5, bean.getAgree());
-		ps.setInt(6, bean.getNum());}catch(Exception e) {
-		}finally {
-			try {
-				if(ps != null)
-				ps.close();
-			} catch (SQLException e) {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, bean.getId());
+			ps.setString(2, bean.getPw());
+			ps.setString(3, bean.getProduct());
+			ps.setString(4, bean.getTime());
+			ps.setString(5, bean.getApprove());
+			ps.setString(6, bean.getAgree());
+			ps.setInt(7, bean.getNum());
+			cnt = ps.executeUpdate();
+		}catch(Exception e) {
+			}finally {
+				try {
+					if(ps != null)
+						ps.close();
+				} catch (SQLException e) {
+				}
+				try {
+					if(con != null)
+						con.close();
+				} catch (SQLException e) {
+				}
+
 			}
-			try {
-				if(con != null)
-					con.close();
-			} catch (SQLException e) {
-			}
-			
-		}
 		return cnt;
 	}
 	public int deletecheckData(String [] row) {
 		getcon();
 		int cnt =-1;
-		String sql = "delete from emart where num =?";
+		String sql = "delete from emart where num=?";
+		for(int i=0; i<row.length; i++) {
+			System.out.println(row[i]+" ");
+		}
 		for (int i = 0; i < row.length-1; i++) {
 			sql += " or num =?";
 		}
 		try {
 			ps = con.prepareStatement(sql);
-			for (int i = 0; i < row.length; i++) {
+			for (int i = 1; i <= row.length; i++) {
 				ps.setInt(i, Integer.parseInt(row[i-1]));
 			}
-			cnt = ps.executeUpdate();
+		cnt = ps.executeUpdate();
+		
 		}catch(Exception e) {
-			
+
 		}finally {
 			try {
 				if(ps != null)
-				ps.close();
+					ps.close();
 			} catch (SQLException e) {
 			}
 			try {
@@ -228,7 +245,7 @@ public class EmartDao {
 					con.close();
 			} catch (SQLException e) {
 			}
-			
+
 		}
 		return cnt;
 	}

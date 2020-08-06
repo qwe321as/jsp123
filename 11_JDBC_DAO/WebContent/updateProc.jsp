@@ -7,13 +7,11 @@
 <jsp:useBean id="bean" class="emart.EmartBean" />
 <jsp:setProperty property="*" name="bean" />
 <%
-	/* 한글처리는 객체 생성 전에 해야한다 안그러면 넘어오는 데이터의 한글 값이 깨진다 */
 	if(bean.getApprove()==null){
-		bean.setApprove("결재");
+		bean.setApprove("결재안함");
 	}
 	if(bean.getAgree()==null){
 		bean.setAgree("비동의");
-
 	}else{
 		bean.setAgree("동의");
 	}
@@ -28,10 +26,10 @@
 		}
 		bean.setProduct(str);
 	}
-	int cnt = dao.insertData(bean);
+	int cnt = dao.updateData(bean);
 	if (cnt == 1) {
 		response.sendRedirect("select.jsp");
 	} else {
-		response.sendRedirect("insertForm.jsp");
+		response.sendRedirect("updateForm.jsp");
 	}
 %>

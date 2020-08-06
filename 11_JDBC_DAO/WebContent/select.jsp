@@ -1,7 +1,6 @@
 <%@page import="emart.EmartBean"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean id="dao" class="emart.EmartDao" />
 <%
 request.setCharacterEncoding("UTF-8");
@@ -14,7 +13,7 @@ function insert() {
 function allch(obj) {
 	var rowobj = document.getElementsByName("row");
 	rowcnt = rowobj.length;
-	if (obj.checked) {
+	if (obj.checked) {//채크되있을떄
 		for (var i = 0; i < rowcnt; i++) {
 			rowobj[i].checked = true;
 		}
@@ -43,7 +42,7 @@ function selectDelete() {
 <form name="myform" action="deleteAll.jsp">
 <input type="button" value="삭제" onclick="selectDelete()">
 <input type="button" value="추가" onclick="insert()">
-<table border="1">
+<table border="1" style="text-align: center;">
 <tr>
 <td><input type="checkbox" name="allcheck" onclick="allch(this)" ></td>
 <th>번호</th>

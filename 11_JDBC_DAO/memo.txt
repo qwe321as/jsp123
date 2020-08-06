@@ -11,7 +11,7 @@ create table emart(
 num number(10),
 id varchar2(10) ,
 pw varchar2(10) ,
-product varchar2(20) ,
+product varchar2(100) ,
 time varchar2(30) ,
 approve varchar2(20),
 agree varchar2(20)

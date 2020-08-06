@@ -9,7 +9,7 @@ public class EmartBean {
 	private String approve;
 	private String agree;
 	
-	EmartBean(){
+	public EmartBean(){
 		
 	}
 	
