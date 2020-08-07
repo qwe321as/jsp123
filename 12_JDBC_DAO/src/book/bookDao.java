@@ -44,10 +44,10 @@ public class bookDao {
 			String author =rs.getString("author");
 			String publisher = rs.getString("publisher");
 			int price = rs.getInt("price");
-			String buy = rs.getString("buy");
+			String buy = String.valueOf(rs.getDate("buy"));
 			String kind = rs.getString("kind");
 			String bookstore = rs.getString("bookstore");
-			String count = rs.getString("count");
+			int count = rs.getInt("count");
 			bookBean bean = new bookBean(num, title, author, publisher, price, buy, kind, bookstore, count);
 			list.add(bean);
 
@@ -79,7 +79,7 @@ public class bookDao {
 			ps.setString(5, bean.getBuy());
 			ps.setString(6, bean.getKind());
 			ps.setString(7, bean.getBookstore());
-			ps.setString(8, bean.getCount());
+			ps.setInt(8, bean.getCount());
 			cnt = ps.executeUpdate();
 		}catch(Exception e){
 
@@ -88,8 +88,8 @@ public class bookDao {
 
 				if(ps != null) {
 					ps.close();}
-				if(rs != null) {
-					rs.close();}
+				if(con != null) {
+					con.close();}
 			} catch (SQLException e) {
 			}
 
@@ -149,7 +149,8 @@ public class bookDao {
 		bookBean bean = null;
 		getcon();
 		String sql = "select * from book where num =?";
-		try{ps=con.prepareStatement(sql);
+		try{
+		ps=con.prepareStatement(sql);
 		ps.setInt(1, num);
 		rs = ps.executeQuery();
 		if(rs.next()) {
@@ -158,10 +159,10 @@ public class bookDao {
 			String author =rs.getString("author");
 			String publisher = rs.getString("publisher");
 			int price = rs.getInt("price");
-			String buy = rs.getString("buy");
+			String buy = String.valueOf(rs.getDate("buy"));
 			String kind = rs.getString("kind");
 			String bookstore = rs.getString("bookstore");
-			String count = rs.getString("count");			
+			int count = rs.getInt("count");			
 			bean = new bookBean(num2, title, author, publisher, price, buy, kind, bookstore, count);
 			
 		}
@@ -182,11 +183,12 @@ public class bookDao {
 		
 		return bean;
 	}
-	public int update(bookBean bean) {
+	public int updateData(bookBean bean) {
 		int cnt =-1;
 		getcon();
-		String sql = "update set title=?, author=?, publisher=?, price=?, buy=?, kind=?, bookstore=?, count=? where num=?";
-		try{ps = con.prepareStatement(sql);
+		String sql = "update book set title=? ,author=? , publisher=?, price=?, buy=?, kind=?, bookstore =?, count=? where num=?";
+		try{
+		ps = con.prepareStatement(sql);
 		ps.setString(1,bean.getTitle() );
 		ps.setString(2,bean.getAuthor() );
 		ps.setString(3, bean.getPublisher());
@@ -194,11 +196,11 @@ public class bookDao {
 		ps.setString(5, bean.getBuy());
 		ps.setString(6, bean.getKind());
 		ps.setString(7, bean.getBookstore());
-		ps.setString(8, bean.getCount());
+		ps.setInt(8, bean.getCount());
 		ps.setInt(9, bean.getNum());
-		
-		
 		cnt = ps.executeUpdate();
+		System.out.print(bean.getAuthor());
+		System.out.print(bean.getNum());
 		}
 		catch(Exception e) {
 			

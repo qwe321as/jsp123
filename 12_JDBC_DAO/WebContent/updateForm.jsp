@@ -4,8 +4,12 @@
 	<% request.setCharacterEncoding("UTF-8"); %>
 	<jsp:useBean id="dao" class="book.bookDao"/>
 	<%
+	
+	System.out.println(request.getParameter("num"));
 	int num = Integer.parseInt(request.getParameter("num"));
 	bookBean bean = dao.getupdate(num);
+	
+	System.out.println(num);
 	%>
 <html>
 <head>
@@ -13,14 +17,22 @@
 
 <title>Insert title here</title>
 </head>
+
+<script type="text/javascript">
+function back() {
+	location.href="select.jsp";
+}
+</script>
 <%
+
 String [] bookstore ={"교보문고", "알라딘", "yes24", "인터파크"};
 String [] count ={"1", "2", "3", "4","5"};
-String [] kind ={"카드", "핸드폰"};
+String [] kind ={"유료", "무료"};
 %>
 <body>
 	<h1>도서 정보 입력</h1>
 	<form name="myform" action="updateProc.jsp" method="post">
+		<input type="hidden" name="num" value="<%=bean.getNum()%>"> 
 		<table border=1>
 			<tr>
 				<td>제목</td>
@@ -40,7 +52,7 @@ String [] kind ={"카드", "핸드폰"};
 			</tr>
 			<tr>
 				<td>입고일</td>
-				<td><input type="date" name="buy" value="<%=bean.getBuy() %>"> </td>
+				<td><input type="date" name="buy" value="<%=String.valueOf(bean.getBuy()) %>"> </td>
 			</tr>
 
 			<tr>
@@ -72,14 +84,13 @@ for(int i = 0; i<kind.length; i++){
 				
 				<%
 				
-				if(bookstore[i].contains(bean.getBookstore())){
+				if(bean.getBookstore().contains(bookstore[i])){
 					%> checked <%
 				}
 				
 				%>
-				
-				
-				>	<%=bookstore[i] %>		
+				>	
+				<%=bookstore[i] %>		
 				<%}
 			%></td>
 			
@@ -100,7 +111,7 @@ for(int i = 0; i<kind.length; i++){
 						<option value="<%=count[i]%>"
 						
 						<%
-						if(count[i].equals(bean.getCount())){
+						if(count[i].equals(String.valueOf(bean.getCount()))){
 							%> selected <%
 						}
 						
@@ -126,6 +137,7 @@ for(int i = 0; i<kind.length; i++){
 		<br> 
 		<input type="submit" value="전송" onclick="return inputCheck()"> 
 		<input type="reset"	value="취소">
+		<input type="button" value="뒤로" onclick="return back()">
 	</form>
 </body>
 </html>

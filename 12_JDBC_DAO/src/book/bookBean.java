@@ -9,7 +9,7 @@ private int price;
 private String buy;
 private String kind;
 private String bookstore;
-private String count;
+private int count;
 public int getNum() {
 	return num;
 }
@@ -58,14 +58,14 @@ public String getBookstore() {
 public void setBookstore(String bookstore) {
 	this.bookstore = bookstore;
 }
-public String getCount() {
+public int getCount() {
 	return count;
 }
-public void setCount(String count) {
+public void setCount(int count) {
 	this.count = count;
 }
 public bookBean(int num, String title, String author, String publisher, int price, String buy, String kind,
-		String bookstore, String count) {
+		String bookstore, int count) {
 	super();
 	this.num = num;
 	this.title = title;

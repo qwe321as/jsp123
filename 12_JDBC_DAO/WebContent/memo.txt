@@ -14,8 +14,8 @@ price number(30),
 buy date,
 kind varchar2(50),
 bookstore varchar2(50),
-count varchar2(30)
+count number
 );
 
-insert into book values(b_num.nextval,'기억','베르나르베르베르','열린책들',14800,'2020.05.30','유료','교보문고','3');
-insert into book values(b_num.nextval,'시선으로부터','전세랑','문학동네',14000,'2020.06.05','무료','알라딘','5');
+insert into book values(b_num.nextval,'기억','베르나르베르베르','열린책들',14800,'2020.05.30','유료','교보문고',3);
+insert into book values(b_num.nextval,'시선으로부터','전세랑','문학동네',14000,'2020.06.05','무료','알라딘',5);

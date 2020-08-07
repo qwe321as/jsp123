@@ -4,8 +4,10 @@
 <%request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="dao" class="emart.EmartDao" />
 <%
+
 int num = Integer.parseInt(request.getParameter("num"));
 EmartBean bean = dao.getEmartbyMid(num);
+
 System.out.println(bean.getId());
 System.out.println(bean.getAgree());
 String [] product ={"식품", "의류", "도서", "가구"};

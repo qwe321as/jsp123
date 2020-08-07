@@ -1,0 +1,17 @@
+create sequence mv_seq
+increment by 1
+start with 1
+minvalue 1
+nocache;
+
+create table movie(
+num number primary key,
+id varchar2(20),
+name varchar2(20),
+age number,
+genre varchar2(100),
+time varchar2(30),
+partner number,
+memo varchar2(100)
+);
+insert into movie values(mv_seq.nextval,'예지공주', '이예지', 24, '다큐', '12~14', 2,'없음');

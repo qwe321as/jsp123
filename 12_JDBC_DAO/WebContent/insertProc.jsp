@@ -7,6 +7,20 @@ request.setCharacterEncoding("UTF-8");
 <jsp:useBean id="bean" class="book.bookBean"/>
 <jsp:setProperty property="*" name="bean"/>
 <%
+if(bean.getTitle() == null){
+	bean.setTitle("제목없음");
+}
+if(bean.getAuthor() == null){
+	bean.setAuthor("작가없음");
+}
+if(bean.getPublisher() == null){
+	bean.setPublisher("출판사없음");
+}
+
+if(bean.getKind() == null){
+	bean.setKind("배송비선택안함");
+}
+
 if (bean.getBookstore() == null) {
 	bean.setBookstore("선택한 항목 없음");
 } else {

@@ -6,10 +6,16 @@
 
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+function back() {
+	location.href="select.jsp";
+}
+</script>
+
 <%
 String [] bookstore ={"교보문고", "알라딘", "yes24", "인터파크"};
 String [] count ={"1", "2", "3", "4","5"};
-String [] kind ={"카드", "핸드폰"};
+String [] kind ={"유료", "무료"};
 %>
 <body>
 	<h1>도서 정보 입력</h1>
@@ -90,7 +96,8 @@ for(int i = 0; i<kind.length; i++){
 		</table>
 		<br> 
 		<input type="submit" value="전송" onclick="return inputCheck()"> 
-		<input type="reset"	value="취소">
+		<input type="reset"	value="취소" >
+		<input type="button" onclick="return back()" value="뒤로" >
 	</form>
 </body>
 </html>
