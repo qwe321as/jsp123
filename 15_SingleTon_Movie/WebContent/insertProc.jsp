@@ -1,14 +1,19 @@
+<%@page import="Movie.MovieDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  insertProc.jsp
  <%
  request.setCharacterEncoding("UTF-8");
  %>
- <jsp:useBean id="dao" class="Movie.MovieDao"/>
  <jsp:useBean id="bean" class="Movie.MovieBean"/>
  <jsp:setProperty property="*" name="bean"/>
  
- <%
+ <% 
+ MovieDao dao= MovieDao.getInstance();  
+     
+ 
+ System.out.print("insertproc: "+dao);
+
  if(bean.getMemo()==null){
 	 bean.setMemo("없음");
  }

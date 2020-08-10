@@ -8,6 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MovieDao {
+	private static MovieDao movi;
+	public static MovieDao getInstance() {
+		if (movi == null) {
+			movi = new MovieDao();
+		}
+		return movi;
+	}
+	
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 	String user="jspid";

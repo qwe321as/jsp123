@@ -1,15 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <html>
 <head>
 
 
 <title>Insert title here</title>
 </head>
+<script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript">
 function back() {
 	location.href="select.jsp";
 }
+$(function(){
+	alert(123);
+});
+
 </script>
 
 <%
@@ -23,7 +29,8 @@ String [] kind ={"유료", "무료"};
 		<table border=1>
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="title"></td>
+				<td><input type="text" name="title">
+				<input type="button" value="책 중복채크" name ="idcheck"></td>
 			</tr>
 			<tr>
 				<td>저자</td>
