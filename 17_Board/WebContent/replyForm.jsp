@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <link href="style.css" rel="stylesheet" type="text/css">
 <%@include file="color.jsp"%>
+<%
+int ref = Integer.parseInt(request.getParameter("ref"));
+int re_step = Integer.parseInt(request.getParameter("re_step"));
+int re_level =Integer.parseInt(request.getParameter("re_level"));
+
+
+%>
 <style>
 body {
 	width: 100%;
@@ -14,11 +21,14 @@ table {
 </style>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="script.js"></script>
-글쓰기
+<b>답글쓰기</b>
 <body bgcolor="<%=bodyback_c%>">
 </body>
 	<!-- form에 쓸떄는 submit submit에쓸떄는 onclick -->
-<form method="post" name="writeform" action="writePro.jsp" onsubmit="return writeSave()">
+<form method="post" name="writeform" action="replyPro.jsp" onsubmit="return writeSave()">
+	<input type="hidden" name="ref" value="<%=ref %>" >
+	<input type="hidden" name="re_step" value="<%=re_step %>" >
+	<input type="hidden" name="re_level" value="<%=re_level %>" >
 	<table border="1" width="450px" align="center" cellspacing="0">
 		<tr align="right">
 			<td colspan="2" bgcolor="<%=value_c%>"><a href="list.jsp">글목록</a></td>
@@ -30,7 +40,7 @@ table {
 		</tr>
 		<tr>
 			<td width="100" align="center" bgcolor="<%=value_c%>">제목</td>
-			<td width="350"><input type="text" size="50" value="제목"
+			<td width="350"><input type="text" size="50" value="[답글]"
 				maxlength="50" name="subject"></td>
 		</tr>
 		<tr>

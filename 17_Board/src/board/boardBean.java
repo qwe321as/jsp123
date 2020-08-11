@@ -17,6 +17,22 @@ private String	content;
 private String	ip;
 
 
+public boardBean(int num, String writer, String email, String subject, String passwd, Timestamp reg_date, int readcount,
+		int ref, int re_step, int re_level, String content, String ip) {
+	super();
+	this.num = num;
+	this.writer = writer;
+	this.email = email;
+	this.subject = subject;
+	this.passwd = passwd;
+	this.reg_date = reg_date;
+	this.readcount = readcount;
+	this.ref = ref;
+	this.re_step = re_step;
+	this.re_level = re_level;
+	this.content = content;
+	this.ip = ip;
+}
 public boardBean() {
 
 }

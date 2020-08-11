@@ -45,7 +45,7 @@ list.jsp
 	</b>
 	<table width="700" border="1"  align="center" >
 		<tr>
-			<td align="right" bgcolor="<%=value_c%>"><a harf="writeform.jsp">글쓰기</a>
+			<td align="right" bgcolor="<%=value_c%>"><a href="writeform.jsp">글쓰기</a>
 			</td>
 		</tr>
 	</table>
@@ -74,7 +74,30 @@ list.jsp
 		%>
 		<tr>
 			<td align="center"><%=number-- %></td>
-			<td align="left"><%=bean.getSubject() %></td>
+			<td align="left">
+			<%
+			int wid =0;
+			if(bean.getRe_level()>0){
+				//답글이다.
+				wid = bean.getRe_level()*20;
+				%>
+				<img alt="답글이미지  level" src="images/level.gif" width="<%=wid %>" height="16">
+				<img alt="답글이미지" src="images/re.gif">
+				<%
+			}else{
+				//원글이다.
+%>				<img alt="답글이미지  level" src="images/level.gif" height="16"><%
+
+			}
+			if(bean.getReadcount()>10){
+				%>
+				<img alt="hot" src="images/hot.gif"  height="16">
+				<%
+			}
+			%> 
+			<a href="content.jsp?num=<%=bean.getNum() %>&pageNum=<%=pageNum %>"><%=bean.getSubject() %></a> 
+			
+			</td>
 			<td align="center"><%=bean.getWriter() %></td>
 			<td align="center"><%=bean.getReg_date() %></td>
 			<td align="center"><%=bean.getReadcount() %></td>
