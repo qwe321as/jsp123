@@ -32,7 +32,7 @@ table {
 
 </body>
 
-<form method="post" action="deletePro.jsp" name="delFrom" onsubmit="return deleteSave()">
+<form method="post" action="deletePro.jsp?pageNum=<%=pageNum	 %>" name="delFrom" onsubmit="return deleteSave()">
 <table border="1" width="500" align="center" cellspacing="0">
 <tr>
 <th width="125" align="center" bgcolor="<%=value_c%>">

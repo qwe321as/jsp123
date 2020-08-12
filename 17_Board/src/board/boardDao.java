@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+
 public class boardDao {
 
 	String driver = "oracle.jdbc.driver.OracleDriver";
@@ -212,88 +213,162 @@ public class boardDao {
 		return bean;
 	}
 	public int deleteArticle(int num, String passwd) {
-	int cnt=-1;
-	getConnection();
-//	String sql1 = "select passwd from board where num=?";
-//	String sql = "delete from board where num=?";
-	String sql = "delete from board where num=? and passwd =?";
-	try {
-//	ps = con.prepareStatement(sql1);
-//	ps.setInt(1, num);
-//	rs =ps.executeQuery();
-//	if (rs.next()) {
-//		String dbpasswd = rs.getString("passwd");
-//		if (dbpasswd.equals(passwd)) {
-	//		ps = con.prepareStatement(sql);
-		//	ps.setInt(1, num);
+		int cnt=-1;
+		getConnection();
+		//	String sql1 = "select passwd from board where num=?";
+		//	String sql = "delete from board where num=?";
+		String sql = "delete from board where num=? and passwd =?";
+		try {
+			//	ps = con.prepareStatement(sql1);
+			//	ps.setInt(1, num);
+			//	rs =ps.executeQuery();
+			//	if (rs.next()) {
+			//		String dbpasswd = rs.getString("passwd");
+			//		if (dbpasswd.equals(passwd)) {
+			//		ps = con.prepareStatement(sql);
+			//	ps.setInt(1, num);
 			//cnt = ps.executeUpdate();
+
+			//}
+			//}
+
+
+			ps= con.prepareStatement(sql);
+			ps.setInt(1, num);
+			ps.setString(2, passwd);
+			cnt=ps.executeUpdate();
+		}catch(Exception e) {
+
+		}
+		finally {
+			try {
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					con.close();
+			}catch(Exception e) {
+
+			}
+		}
+		return cnt;
+	}
+	public int replyArticle(boardBean bean) {
+		getConnection();
+		int cnt = -1;
+		String sql = "insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip) " + 
+				"values(board_seq.nextval,?,?,?,?,?,?,?,?,?,?)";
+		String sql_update = "update board set re_step = re_step+1 where ref=? and re_step>?";
+		try {
+			ps = con.prepareStatement(sql_update);
+			ps.setInt(1, bean.getRef());
+			ps.setInt(2, bean.getRe_step()); //이미있는것들에 +1 하는 작업
+			ps.executeUpdate();
+
+			ps = con.prepareStatement(sql);
+			ps.setString(1, bean.getWriter());
+			ps.setString(2, bean.getEmail());
+			ps.setString(3, bean.getSubject());
+			ps.setString(4, bean.getPasswd());
+			ps.setTimestamp(5, bean.getReg_date());
+			ps.setInt(6, bean.getRef()); // re_step
+			ps.setInt(7, bean.getRe_step()+1); // re_step
+			ps.setInt(8, bean.getRe_level()+1); // re_level
+			ps.setString(9, bean.getContent());
+			ps.setString(10, bean.getIp());
+			cnt = ps.executeUpdate();
+
+
+		}catch(Exception e) {
+
+		}finally {
+			try {
+				if(rs!=null)
+					rs.close();
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					con.close();
+			}catch(Exception e) {
+
+			}
+
+		}
+		return cnt;	
+	}
+	public boardBean updategetbean(int num1) {
+		getConnection();
+		boardBean bean = null;
+		String sql = "select * 	from board where num = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, num1);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				int	num =rs.getInt("num");
+				String	writer =rs.getString("writer");
+				String	email =rs.getString("email");
+				String	subject =rs.getString("subject");
+				String	passwd =rs.getString("passwd");
+				Timestamp reg_date = rs.getTimestamp("reg_date");
+				int	readcount =rs.getInt("readcount");
+				int	ref =rs.getInt("ref");
+				int	re_step =rs.getInt("re_step");
+				int	re_level= rs.getInt("re_level");
+				String	content =rs.getString("content");
+				String	ip =rs.getString("ip");
+				bean = new boardBean(num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip);
+			}
+		}catch(Exception e) {
+
+		}finally {
+			try {
+				if(rs!=null)
+					rs.close();
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					con.close();
+			}catch(Exception e) {
+
+			}
+		}
+		return bean;
+	}
+	public int updatebean(boardBean bean) {
+		int cnt=-1;
+		getConnection();
+		String sql = "update board set writer=?, email=?, subject=?, content=?  where num=? and passwd =?";
+		System.out.println(bean.getWriter());
+		System.out.println(bean.getEmail()); 
+		System.out.println(bean.getSubject());
+		System.out.println(bean.getContent());
+		System.out.println(bean.getNum());
+		System.out.println(bean.getPasswd());
+		try {
+			ps=con.prepareStatement(sql);
+			ps.setString(1, bean.getWriter());
+			ps.setString(2, bean.getEmail());
+			ps.setString(3, bean.getSubject());
+			ps.setString(4, bean.getContent());
+			ps.setInt(5, bean.getNum());
+			ps.setString(6, bean.getPasswd());
 			
-		//}
-	//}
-		
-		
-		ps= con.prepareStatement(sql);
-		ps.setInt(1, num);
-		ps.setString(2, passwd);
-		cnt=ps.executeUpdate();
-	}catch(Exception e) {
-		
-	}
-	finally {
-		try {
-			if(ps!=null)
-				ps.close();
-			if(con!=null)
-				con.close();
+			cnt = ps.executeUpdate();
 		}catch(Exception e) {
+			
+		}finally {
+			try {
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					con.close();
+			}catch(Exception e) {
 
-		}
-	}
-	return cnt;
-	}
-public int replyArticle(boardBean bean) {
-	getConnection();
-	int cnt = -1;
-	String sql = "insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip) " + 
-			"values(board_seq.nextval,?,?,?,?,?,?,?,?,?,?)";
-	String sql_update = "update board set re_step = re_step+1 where ref=? and re_step>?";
-	try {
-		ps = con.prepareStatement(sql_update);
-		ps.setInt(1, bean.getRef());
-		ps.setInt(2, bean.getRe_step()); //이미있는것들에 +1 하는 작업
-		ps.executeUpdate();
-		
-		ps = con.prepareStatement(sql);
-		ps.setString(1, bean.getWriter());
-		ps.setString(2, bean.getEmail());
-		ps.setString(3, bean.getSubject());
-		ps.setString(4, bean.getPasswd());
-		ps.setTimestamp(5, bean.getReg_date());
-		ps.setInt(6, bean.getRef()); // re_step
-		ps.setInt(7, bean.getRe_step()+1); // re_step
-		ps.setInt(8, bean.getRe_level()+1); // re_level
-		ps.setString(9, bean.getContent());
-		ps.setString(10, bean.getIp());
-		cnt = ps.executeUpdate();
-		
-		
-	}catch(Exception e) {
-		
-	}finally {
-		try {
-			if(rs!=null)
-				rs.close();
-			if(ps!=null)
-				ps.close();
-			if(con!=null)
-				con.close();
-		}catch(Exception e) {
-
+			}
 		}
 		
+		return cnt;
 	}
-return cnt;	
-}
 
 }
 

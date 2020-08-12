@@ -60,7 +60,7 @@ table {
 		</tr>
 		<tr>
 			<td colspan="4"  width="125" align="right" bgcolor="<%=value_c%>">
-			<input type="button" value="글수정"> 
+			<input type="button" value="글수정" onclick="location='updateForm.jsp?num=<%=bean.getNum()%>&pageNum=<%=pageNum%>'"> 
 			<input type="button" value="글삭제" onclick="location='deleteForm.jsp?num=<%=bean.getNum()%>&pageNum=<%=pageNum%>'"> 
 			<input type="button" value="답글쓰기" onclick="location='replyForm.jsp?ref=<%=bean.getRef()%>&re_step=<%=bean.getRe_step()%>&re_level=<%=bean.getRe_level()%>'"> 
 			<input type="button" value="글목록" onclick="location='list.jsp?pageNum=<%=pageNum%>'">

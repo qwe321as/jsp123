@@ -169,7 +169,7 @@
       <Context docBase="Project_1" path="/Project_1" reloadable="true" source="org.eclipse.jst.jee.server:Project_1"/>
       <Context docBase="13_JDBC_DAO_Movie" path="/13_JDBC_DAO_Movie" reloadable="true" source="org.eclipse.jst.jee.server:13_JDBC_DAO_Movie"/>
       <Context docBase="14_Singleton" path="/14_Singleton" reloadable="true" source="org.eclipse.jst.jee.server:14_Singleton"/>
-      <Context docBase="15_SingleTon_Movie" path="/15_SingleTon_Movie" reloadable="true" source="org.eclipse.jst.jee.server:15_SingleTon_Movie"/><Context docBase="16_DBCP" path="/16_DBCP" reloadable="true" source="org.eclipse.jst.jee.server:16_DBCP"/><Context docBase="17_Board" path="/17_Board" reloadable="true" source="org.eclipse.jst.jee.server:17_Board"/></Host>
+      <Context docBase="15_SingleTon_Movie" path="/15_SingleTon_Movie" reloadable="true" source="org.eclipse.jst.jee.server:15_SingleTon_Movie"/><Context docBase="16_DBCP" path="/16_DBCP" reloadable="true" source="org.eclipse.jst.jee.server:16_DBCP"/><Context docBase="17_Board" path="/17_Board" reloadable="true" source="org.eclipse.jst.jee.server:17_Board"/><Context docBase="18_Upload" path="/18_Upload" reloadable="true" source="org.eclipse.jst.jee.server:18_Upload"/><Context docBase="Minimall" path="/Minimall" reloadable="true" source="org.eclipse.jst.jee.server:Minimall"/></Host>
     </Engine>
   </Service>
 </Server>
