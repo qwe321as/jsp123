@@ -32,7 +32,7 @@ myshop\member\register.jsp <br><br>
    <tr>
       <th bgcolor="yellow" align="center"> E-Mail </th>
       <td>
-         <input type="text" name="email" value="gildong@naver.com"> 
+         <input type="text" name="email" value="ZZang@yeji.com"> 
       </td>
    </tr>
    <tr>
@@ -42,14 +42,14 @@ myshop\member\register.jsp <br><br>
    </tr>
    <tr>
       <th bgcolor="yellow" align="center">한글 이름</th>
-      <td><input type="text" name="name" value="홍길동"> 성과 이름을 붙여주세요 (예)홍길동</td>
+      <td><input type="text" name="name" value="이예지"> 성과 이름을 붙여주세요 (예)홍길동</td>
    </tr>
    <tr>
       <th bgcolor="yellow" align="center">주민 등록 번호</th>
       <td>
-         <input type="text" name="ssn1" maxlength="6" size="6" value="123456">
+         <input type="text" name="rrn1" maxlength="6" size="6" value="123456">
          - 
-         <input type="text" name="ssn2" maxlength="7" size="7" value="1234567">
+         <input type="text" name="rrn2" maxlength="7" size="7" value="1234567">
       </td>            
    </tr>
    <tr>
@@ -67,7 +67,7 @@ myshop\member\register.jsp <br><br>
    <tr>
       <th bgcolor="yellow" align="center">가입 일자</th>
       <td>
-         <input type="text" name="joindate" size="10" value="2020/01/01" onBlur="datecheck()"> 예)2000/05/22
+         <input type="text" name="joindate" size="10" value="2020/08/13" onBlur="datecheck()"> 예)2000/05/22
       </td>
    </tr>
    <tr>

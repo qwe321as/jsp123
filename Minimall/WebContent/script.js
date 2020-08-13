@@ -34,6 +34,12 @@ function writeSave(){
       return false;
    }
    
+   if (pwsame=="비번불일치") {
+	alert("비밀번호 비밀번호확인 불일치");
+	return false;
+}
+   
+   
    
 }//writeSave
 function duplicate() {
@@ -63,5 +69,17 @@ function duplicate() {
 		
 	});//ajax
 
+}   
+
+function passwd_keyup() {
 	
+	if($('input[name=password').val()!=$('input[name=repassword').val()){
+		$('#pwmessage').html('<font color=red> 비밀번호와 비밀번호확인 불일치</font>');
+		$('#pwmessage').show();
+		pwsame = "비번불일치";
+	}else{
+		$('#pwmessage').html('<font color=blue> 비밀번호와 비밀번호확인 일치</font>');
+		$('#pwmessage').show();
+		pwsame = "비번일치";
+			}
 }
