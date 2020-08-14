@@ -12,6 +12,28 @@ public class productBean {
 	private String pcontents;
 	private int point;
 	private String pinputdate;
+	private int totalPrice;
+	private int salePrice;
+	private int totalPoint;
+	
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public int getSalePrice() {
+		return salePrice;
+	}
+	public void setSalePrice(int salePrice) {
+		this.salePrice = salePrice;
+	}
+	public int getTotalPoint() {
+		return totalPoint;
+	}
+	public void setTotalPoint(int totalPoint) {
+		this.totalPoint = totalPoint;
+	}
 	public int getPnum() {
 		return pnum;
 	}
@@ -79,7 +101,8 @@ public class productBean {
 		this.pinputdate = pinputdate;
 	}
 	public productBean(int pnum, String pname, String pcategory_fk, String pcompany, String pimage, int pqty, int price,
-			String pspec, String pcontents, int point, String pinputdate) {
+			String pspec, String pcontents, int point, String pinputdate, int totalPrice, int salePrice,
+			int totalPoint) {
 		super();
 		this.pnum = pnum;
 		this.pname = pname;
@@ -92,6 +115,10 @@ public class productBean {
 		this.pcontents = pcontents;
 		this.point = point;
 		this.pinputdate = pinputdate;
+		this.totalPrice = totalPrice;
+		this.salePrice = salePrice;
+		this.totalPoint = totalPoint;
 	}
+
 	
 }

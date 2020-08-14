@@ -16,13 +16,13 @@ myshop\member\register.jsp <br><br>
    <tr>
       <th bgcolor="yellow" align="center"> * 회원 아이디 </th>
       <td><input type="text" name="id">
-       <button type="button" id="id_check" onclick="return duplicate()">중복체크</button>
+       <button type="button" id="id_check" onclick="duplicate()">중복체크</button>
             <span id="idmessage" style="display:none;"></span>
       </td>
    </tr>
    <tr>
       <th bgcolor="yellow" align="center"> * 비밀 번호</th>
-      <td><input type="password" name="password" onBlur="return pwcheck()"> 영문 소문자/숫자 조합 3~8자</td>
+      <td><input type="password" id="password" name="password" onBlur="pwcheck()"> 영문 소문자/숫자 조합 3~8자</td>
    </tr>
    <tr>
       <th bgcolor="yellow" align="center"> * 비밀 번호 확인</th>
