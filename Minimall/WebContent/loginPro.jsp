@@ -18,6 +18,7 @@ if(mdto!=null){
 		url=request.getContextPath()+"/myshop/display/mall.jsp";
 		
 	}
+	session.setAttribute("memid", _id);//memid라는 세션으로 설정됨 웹당 하나 
 }else{
 	url="main.jsp";
 	msg="가입하지 않은 회원입니다.";

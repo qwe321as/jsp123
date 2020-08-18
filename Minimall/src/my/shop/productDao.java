@@ -95,12 +95,15 @@ public class productDao {
 		int pnum = Integer.parseInt(mr.getParameter("pnum"));
 		String pcompany = mr.getParameter("pcompany");
 		String pimage = mr.getFilesystemName("pimage");
+		String old_pimage = mr.getParameter("old_pimage"); // 이전이미지.jpg
 		int pqty = Integer.parseInt(mr.getParameter("pqty"));;
 		int price = Integer.parseInt(mr.getParameter("price"));
 		String pspec = mr.getParameter("pspec");
 		String pcontents = mr.getParameter("pcontents");
 		int point = Integer.parseInt(mr.getParameter("point"));
-		
+		if(pimage==null) {
+			pimage=old_pimage;
+		}
 		String spl= "update product set pcompany=? ,pimage=? ,pqty=? ,price=? "
 				+ ",pspec=? ,pcontents=? ,point=? where pnum=? ";
 
@@ -281,6 +284,99 @@ public ArrayList<productBean> getseletpro(int pnum) {
 	}
 	return list;
 }
+
+
+public int updatePimage(int pnum) {
+	int cnt=-1;
+	String sql="update product set pimage = null where pnum=?";
+	getcon();
+	try {
+		psmt = con.prepareStatement(sql);
+		psmt.setInt(1, pnum);
+		cnt = psmt.executeUpdate();
+	} catch (SQLException e) {
+	}finally {
+		try {
+			if(psmt!=null)
+				psmt.close();
+			if(con!=null)
+				con.close();
+			if(rs!=null)
+				rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	return cnt;
+}
+public ArrayList<productBean> getSelectBySpe(String spec) {
+	ArrayList<productBean> list = new ArrayList<productBean>();
+	getcon();
+	String sql = "select * from product where pspec=?";
+	try {
+		psmt = con.prepareStatement(sql);
+		psmt.setString(1, spec);
+		rs=psmt.executeQuery();
+		while (rs.next()){
+			 int pnum = rs.getInt(1);
+			 String pname =rs.getString(2);
+			 String pcategory_fk =rs.getString(3);
+			 String pcompany =rs.getString(4);
+			 String pimage =rs.getString(5);
+			 int pqty= rs.getInt(6); 
+			 int price= rs.getInt(7);
+			 String pspec =rs.getString(8);
+			 String pcontents =rs.getString(9);
+			 int point= rs.getInt(10);
+			 String pinputdate =rs.getString(11);
+			productBean bean = new productBean(pnum, pname, pcategory_fk, pcompany, pimage, pqty, price, pspec, pcontents, point, pinputdate,0,0,0);
+			list.add(bean);
+		}
+	} catch (SQLException e) {
+	}finally {
+		try {
+			if(psmt!=null)
+				psmt.close();
+			if(con!=null)
+				con.close();
+			if(rs!=null)
+				rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	return list;
+}
+public ArrayList<productBean> getSelectBySpe(String code,String cgname) {
+	ArrayList<productBean> list = new ArrayList<productBean>();
+	getcon();
+	String sql = "select * from product where pcategory_fk like ?";  //'"+code+"%'"
+	try {
+		psmt = con.prepareStatement(sql);
+		psmt.setString(1, "%"+code+"%");
+		rs=psmt.executeQuery();
+
+		list=MakeArraylist(rs);
+		
+	} catch (SQLException e) {
+	}finally {
+		try {
+			if(psmt!=null)
+				psmt.close();
+			if(con!=null)
+				con.close();
+			if(rs!=null)
+				rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	return list;
+}
+
 }
 
 

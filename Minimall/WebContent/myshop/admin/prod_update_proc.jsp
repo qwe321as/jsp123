@@ -1,15 +1,40 @@
+<%@page import="java.io.File"%>
 <%@page import="my.shop.productDao"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8");%>
 <%
 ServletContext sc = config.getServletContext();
 int maxSize=1024*1024*5;
+
 String encType="UTF-8";
 String uploadDir=sc.getRealPath("/myshop/images");
 MultipartRequest mr = new MultipartRequest(request, uploadDir, maxSize, encType, new DefaultFileRenamePolicy());
+String pimage2 = mr.getFilesystemName("pimage");
+System.out.println("pimage2:" + pimage2);
+String old_pimage = mr.getParameter("old_pimage");
+System.out.println("old_pimage:" + old_pimage); // 기존이미지.jpg
+File dir = new File(uploadDir);
+
+if(pimage2 != null){ 
+	if(old_pimage != null) { 
+		File delFile = new File(dir,old_pimage);//old이미지 파일 객체로 변환
+		if(delFile.exists()){ 
+			//델파일이 존재하면 true
+			if(delFile.delete()){
+				 
+%>
+<script type="text/javascript">
+					alert("이미지 화일 삭제 성공");
+				</script>
+<%					
+			}//지우는데 성공하면 블리언 트루리턴
+			
+		}
+	}
+}
 productDao dao =productDao.getInstance();
 int cnt = dao.updateprodu(mr);
 String msg,url="";

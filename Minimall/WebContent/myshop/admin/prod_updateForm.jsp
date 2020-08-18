@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="my.shop.productDao"%>
 <%@page import="my.shop.productBean"%>
 <%@page import="my.shop.CategoryBean"%>
@@ -52,9 +53,25 @@
 			<tr>
 				<th class=m2>상품 이미지</th>
 				<td>
+			<%String configFolder = config.getServletContext().getRealPath("/myshop/images");%>
 				<img
 					src="<%=request.getContextPath()%>/myshop/images/<%=P_list.get(0).getPimage()%>"
-					width="200px" height="150px" /><input type="file" name="pimage"></td>
+				
+				width="200px" height="150px" />
+					<input type="file" name="pimage">
+					<%
+					if(P_list.get(0).getPimage() !=null){//db테이블엔 있는데
+						File existFile = new File(configFolder,P_list.get(0).getPimage());
+						if(existFile.exists()){
+					%><input type="text" readonly="readonly" name="old_pimage" value="<%=P_list.get(0).getPimage() %>"> <!-- old_pimage   -->
+						<%	
+						}//웹서버 폴더에있다면
+						else{
+							int cnt = p_dao.updatePimage(pnum);
+						}
+					}
+					%>
+					</td>
 			</tr>
 			<tr>
 				<th class=m2>상품 수량</th>
