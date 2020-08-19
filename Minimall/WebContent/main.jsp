@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link href="style.css" rel="stylesheet" type="text/css">
+<%
+session.invalidate();
+%>
 [로그인화면]
 <br><br>
 <script type="text/javascript"> </script>

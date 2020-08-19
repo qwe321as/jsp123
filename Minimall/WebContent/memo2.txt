@@ -1,0 +1,86 @@
+-- 회원 테이블 생성
+drop sequence mem_s ;
+
+create sequence mem_s  
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+ 
+drop table login;
+create table login(
+	no number primary key,
+	name varchar2(30) not null,
+	id varchar2(12) not null,
+	password varchar2(12),
+	email varchar2(20));
+
+insert into login(no, name, id, password, email) 
+values(memseq.nextval, '어드민', 'admin', '1234', '111111', '2222222');
+commit;
+
+-- 카테고리 테이블
+drop sequence cate_s;
+drop table catego;
+
+
+create sequence cate_s
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+
+create table catego(
+	cnum number primary key,
+	code varchar2(20) not null,
+	genre varchar2(50) not null
+);
+
+
+-- 책테이블
+drop sequence book_s;
+create sequence book_s 
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+drop table book ;
+create table book(
+	bnum int not null primary key,
+	title varchar2(50) not null,
+	author varchar2(50),
+	publisher varchar2(300),
+	bcategory varchar2(20) not null, -- 선택한 카테고리
+	bimage varchar2(30),
+	pcontents varchar2(300),
+	bpasswd varchar2(30),
+	inputdate varchar2(10)
+);
+
+-------퀴즈 테이블
+drop sequence quiz_s;
+create sequence quiz_s 
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+ 
+drop table quizz;
+create table quizz(
+	qnum number, -- 주문번호(orderseq)
+	qcategory varchar2(20) not null, -- 선택한 카테고리
+	question varchar2(30),
+	answer varchar2(30)
+);
+
+commit ;
+
+
+

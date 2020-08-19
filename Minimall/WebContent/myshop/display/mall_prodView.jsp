@@ -4,29 +4,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="mall_top.jsp"%>
-<script type="text/javascript">
-function goCart() {
-	oqty=document.f.oqty.value;
-	if(oqty<1){
-	alert("1이상의 수를 입력하세용");
-	return;
-	}else{
-		location.href="<%=request.getContextPath()%>/myshop/display/mall_cartAdd.jsp";
-	}
-	
-}
-function goOrder() {
-	alert("goOrder");
-	
-}
-</script>
 <%request.setCharacterEncoding("UTF-8"); %>
+<script type="text/javascript">
+function goCart(pnum){
+	//alert("goCart");
+	oqty = document.f.oqty.value;
+	if(oqty < 1) {
+		alert("1보다 큰 수를 입력하세요");
+		return;
+	}
+	location.href="<%=request.getContextPath() %>/myshop/display/mall_cartAdd.jsp?pnum="+pnum+"&oqty="+oqty;       
+}
+
+function goOrder(pnum){
+	//alert("goOrder");
+	document.f.action="<%=request.getContextPath() %>/myshop/display/mall_order.jsp?pnum="+pnum;
+	document.f.submit();
+}
+</script>    
 <% 
 int pnum = Integer.parseInt(request.getParameter("pnum"));
 productDao dao3 = productDao.getInstance();
 ArrayList<productBean> list3 = dao3.getseletpro(pnum);
 DecimalFormat df = new DecimalFormat("###,###");
 %>
+
 <table width="100%" align="center">
 		<tr class="m1">
 		<%
@@ -40,16 +42,17 @@ DecimalFormat df = new DecimalFormat("###,###");
 			<td class="m3" align="center"><form name="f" method="post" >
 			 상품번호: <%=bean.getPnum() %>
 			<br> 상품이름: <%=bean.getPname() %>
-			<br> 삼품가격: <font color=red><%=df.format(bean.getPrice()) %></font> 원
+			<br> 상품수량: <%=list3.get(0).getPqty() %>
+			<br> 상품가격: <font color=red><%=df.format(bean.getPrice()) %></font> 원
 			<br> 상품포인트: [<font color=red><%=df.format(bean.getPoint()) %> </font>]point
 			<br> 상품 갯수:<input type="text" size="2" value="1" name="oqty" >개
 			<br> 			<br> 
 			
 			<table width="90%" align="center">
-			<tr>
-			<td><a href="javascript:goCart()" >
+			<tr>	
+			<td><a href="javascript:goCart(<%=pnum %>)" >
 			<img width="90" height="35" alt="장바구니 담기" src="<%=request.getContextPath() %>/img/cartbtn.gif"> </td></a>
-			<td><a href="javascript:goOrder()" >
+			<td><a href="javascript:goOrder(<%=pnum %>)" >
 			<img padding="100" width="90" height="35"  alt="즉시구매하기" src="<%=request.getContextPath() %>/img/orderbtn.gif"> </td></tr></a>
 			</table>
 			</form>
