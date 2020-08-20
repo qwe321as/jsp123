@@ -85,6 +85,19 @@ function passwd_keyup() {
 }
 
 function pwcheck() {
+	//var pw = document.forms[0].password.value;
+	//var regexp = /^[a-z0-9]{3,8}$/i;
+	/*if(!regexp.test(pw){
+		alert("형식이 틀렸습니다.");
+		return false;
+	}
+	var chk_num = pw.search(/[0-9]/);
+	var chk_eng = pw.search(/[a-z]/i);
+	if(chk_num<0||chk_eng<0){
+	alert("비밀번호는 영문자 숫자 조합해주세요");
+	return false;
+	}
+	*/
 	 var pw = $("#password").val();
 	 var num = pw.search(/[0-9]/g);
 	 var eng = pw.search(/[a-z]/ig);
@@ -93,7 +106,7 @@ function pwcheck() {
 
 	 if(pw.length < 3 || pw.length > 8){
 
-	  alert("8자리 ~ 20자리 이내로 입력해주세요.");
+	  alert("3자리 ~ 8자리 이내로 입력해주세요.");
 	 }
 	 /*else if(pw.search(/\s/) != -1){
 	  alert("비밀번호는 공백 없이 입력해주세요.");

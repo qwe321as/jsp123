@@ -10,7 +10,7 @@ margin:0px auto;}
 <font size=6>쇼핑몰 (관리자화면)</font><br>
 <a href="main.jsp"><font size=3>쇼필몰홈</font></a>
 <a href="<%=request.getContextPath() %>/main.jsp"> <font size=3>메인홈 </font> </a>
-<font size=3>로그아웃</font>
+<a href="<%=request.getContextPath() %>/logout.jsp"> 로그아웃</a>
 <br>  
 <br>
 <table border="1" width="800" hight="400">

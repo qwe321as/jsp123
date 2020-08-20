@@ -24,8 +24,11 @@ String memid = (String)session.getAttribute("memid");//세션 받아오기
 
 	<tr>
 		<td colspan="2" align="center"><a
-			href="<%=contextPath%>/main.jsp">HOME</a> <a
-			href="<%=contextPath%>/myshop/admin/main.jsp">관리자홈</a> <a
+			href="<%=contextPath%>/main.jsp">HOME</a> 
+			<%if(memid.equals("admin")){ %>
+			<a
+			href="<%=contextPath%>/myshop/admin/main.jsp">관리자홈</a>
+			<%} %> <a
 			href="<%=contextPath%>/myshop/display/mall.jsp">쇼핑몰홈</a> <a
 			href="<%=contextPath%>/myshop/display/mall_cartList.jsp">장바구니</a> <a
 			href="<%=contextPath%>/myshop/board/list.jsp">게시판</a> <a
@@ -41,6 +44,7 @@ String memid = (String)session.getAttribute("memid");//세션 받아오기
 	</tr>
 	<tr>
 		<td width="180px" align="center" valign="top"  border="1">
+				카테고리
 			<table width="100%" align="left" border="1">
 				<%
 				if(list.size()==0){

@@ -23,6 +23,8 @@ function goOrder(pnum){
 }
 </script>    
 <% 
+application.setAttribute("flag", true);
+System.out.println("prod_flag= "+application.getAttribute("flag"));
 int pnum = Integer.parseInt(request.getParameter("pnum"));
 productDao dao3 = productDao.getInstance();
 ArrayList<productBean> list3 = dao3.getseletpro(pnum);

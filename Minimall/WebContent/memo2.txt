@@ -58,7 +58,7 @@ create table book(
 	publisher varchar2(300),
 	bcategory varchar2(20) not null, -- 선택한 카테고리
 	bimage varchar2(30),
-	pcontents varchar2(300),
+	pcontents varchar2(30000),
 	bpasswd varchar2(30),
 	inputdate varchar2(10)
 );

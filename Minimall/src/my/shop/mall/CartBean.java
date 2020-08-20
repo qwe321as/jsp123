@@ -75,5 +75,8 @@ public class CartBean {
 			clist.removeElement(clist.get(0));
 		}
 	}
+	public void removeAllProduct() {
+		clist.removeAllElements();
+	}
 
 }

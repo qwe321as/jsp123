@@ -6,6 +6,9 @@
 <%@ include file="mall_top.jsp"%>
 <jsp:useBean id="mallCart" class="my.shop.mall.CartBean" scope="session" />
 <%
+boolean flag = (boolean)application.getAttribute("flag");
+System.out.println("order_flag= "+application.getAttribute("flag"));
+
 if(memid.equals("admin")){
 	%>
 	<script type="text/javascript">
@@ -18,8 +21,9 @@ history.back();
 int pnum=Integer.parseInt(request.getParameter("pnum"));
 int oqty=Integer.parseInt(request.getParameter("oqty"));
 if(pnum !=0&&oqty!=0){
+	if(flag==true){
 mallCart.addProduct(pnum, oqty);
-}
+}}
 DecimalFormat df = new DecimalFormat("###,###");
 int cartTotalPrice =0;
 	
@@ -56,5 +60,8 @@ int cartTotalPrice =0;
 		}
 	%>
 </table>
-<input type="button" value="결재하기">
+<input type="button" value="결재하기" onclick="location.href='<%=request.getContextPath()%>/myshop/display/mall_calculate.jsp'">
+<% application.setAttribute("flag", false);
+flag = (boolean)application.getAttribute("flag");
+System.out.println("order_flag 아래 = "+application.getAttribute("flag"));%>
 <%@ include file="mall_bottom.jsp"%>
