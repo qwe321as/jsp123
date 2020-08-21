@@ -35,4 +35,91 @@ public class logindao {
 		} catch (SQLException e) {
 		}
 	}
+	public boolean findid(String id) {
+	boolean flag=false;
+	System.out.println(id);
+	getConn();
+	String sql = "select * from login where id =?";
+	try {
+		ps=con.prepareStatement(sql);
+		ps.setString(1, id);
+		rs = ps.executeQuery();
+		while (rs.next()) {
+			flag=true;
+		}
+	} catch (SQLException e) {
+	}finally {
+		try {
+			if(ps!=null)
+			ps.close();
+			if(rs!=null)
+				rs.close();
+			if(con!=null)
+				con.close();
+		} catch (SQLException e) {
+		}
+	}
+	return flag;
+	}
+	public int insertid(loginbean bean) {
+		int cnt = -1;
+		getConn();
+		String sql = "insert into login values(mem_s.nextval,?,?,?,?)";
+		try {
+			ps=con.prepareStatement(sql);
+			ps.setString(1, bean.getName());
+			ps.setString(2, bean.getId());
+			ps.setString(3, bean.getPassword());
+			ps.setString(4, bean.getEmail());
+			cnt = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+		}finally {
+			try {
+				if(ps!=null)
+				ps.close();
+				if(rs!=null)
+					rs.close();
+				if(con!=null)
+					con.close();
+			} catch (SQLException e) {
+			}
+		}
+		
+		return cnt;
+		
+	}
+	public loginbean getMemberInfo(String id1, String password1) {
+		loginbean bean =null;
+		getConn();
+		String sql = "select * from login where id=? and password=?";
+		try {
+			ps=con.prepareStatement(sql);
+			ps.setString(1, id1);
+			ps.setString(2, password1);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				int no = rs.getInt("no");
+				String name = rs.getString("name");
+				String id = rs.getString("id");
+				String password = rs.getString("password");
+				String email = rs.getString("email");
+				bean = new loginbean(no, name, id, password, email);
+			}
+		} catch (SQLException e) {
+		}finally {
+			try {
+				if(ps!=null)
+				ps.close();
+				if(rs!=null)
+					rs.close();
+				if(con!=null)
+					con.close();
+			} catch (SQLException e) {
+			}
+		}
+		
+		return bean;
+
+	}
 	}

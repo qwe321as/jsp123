@@ -4,7 +4,7 @@
 <%
 session.invalidate();//session 무효화
 %>
-<form action = "logiPro.jsp" method= "post">
+<form action = "loginPro.jsp" method= "post">
 <table border ="1">
   <tr align = "center">
      <td bgcolor = "#FFCC00">아이디</td>

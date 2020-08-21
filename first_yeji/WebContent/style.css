@@ -1,0 +1,68 @@
+/*style.css
+/*표준 글꼴 서식 스타일*/
+h1,h2,h3,h4,h5,h6
+{
+   font-family:verdana;
+   color:#808080;
+   
+}
+body, td, input, select, textarea, p,th
+{
+   font-size:13px;
+   font-family:verdana;
+   color:#000000;
+   padding:4px;
+}
+/*표준 링크 스타일*/
+a:link{
+   color:#000000; text-decoration:none;
+   font-size:13px; font-family:verdana;
+}
+a:visited{
+   color:#e6999b; text-decoration:none;
+   font-size:13px; font-family:verdana;
+}
+a:hover{
+   color:pink; text-decoration:underline;
+   font-size:13px; font-family:verdana;
+}
+/*입력 양식 스타일*/
+.box{
+   border:1px solid navy;
+   padding-left:8px;
+}
+.outline{
+   border-top:4px double navy;
+   border-bottom:4px double navy;
+}
+.m1{
+background-color:#e9e8ec; /* 옅은회색 */
+border-bottom:1px dotted #ff80c0;
+}
+.m2{
+background-color:#FFEFF7; 
+border-bottom:1px dotted #EAF0E8;
+}
+.m3{
+border-bottom:1px dotted navy;
+}
+.line {
+	border-bottom: 1px solid gray;
+}
+img{
+ width:50;
+ height:50;
+ position: absolute;
+ right: 20px;
+}
+.main {
+	width: 100%;
+	height: 70%;
+	background: white;
+	position: absolute;
+	top: 30%;
+	left: 10px;
+	right: 10px;
+	padding: 0px;
+	margin: 0px;
+}
