@@ -15,7 +15,7 @@ if(baen!=null){
 	String _id = baen.getId();
 	int _no = baen.getNo();
 	if(_id.equals("admin")){
-		url=request.getContextPath()+"/main.jsp";
+		url=request.getContextPath()+"/admin/admin_main.jsp";
 	}else{
 		url=request.getContextPath()+"/main.jsp";
 		

@@ -54,13 +54,13 @@ String memid = (String)session.getAttribute("memid");
 	<table width="100%" height="50" border="0">
 		<tr height="20px">
 			<th>
-			<a href="<%=request.getContextPath() %>/main.jsp">
-			<font size="5" class="line">Home </font> </a></th>
-			<th><a href="<%=request.getContextPath() %>/book.jsp">
-			<font size="5" class="line">Book</font></a></th>
-			<th><a href="<%=request.getContextPath() %>/Report/board_main.jsp"><font size="5" class="line">Report</font></a></th>
-			<th><a href="<%=request.getContextPath() %>/board/board_main.jsp"><font size="5" class="line">Debate</font></a></th>
-			<th><a href="<%=request.getContextPath() %>/Quiz.jsp"><font size="5" class="line">Quiz</font></a></th>
+			<a href="<%=request.getContextPath() %>/admin/addcate.jsp">
+			<font size="5" class="line">장르 추가 </font> </a></th>
+			<th><a href="<%=request.getContextPath() %>/admin/addbook.jsp">
+			<font size="5" class="line">책 추가하기</font></a></th>
+			<th><a href="<%=request.getContextPath() %>/admin/theme.jsp"><font size="5" class="line">토론 주제 추가하기</font></a></th>
+			<th><a href="<%=request.getContextPath() %>/admin/addQuiz.jsp"><font size="5" class="line">퀴즈 추가하기</font></a></th>
+			<th><a href="<%=request.getContextPath() %>/admin/serch.jsp"><font size="5" class="line">회원관리</font></a></th>
 		</tr>
 	</table>
 

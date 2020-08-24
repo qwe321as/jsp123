@@ -9,7 +9,7 @@ session.invalidate();//session 무효화
   <tr align = "center">
      <td bgcolor = "#FFCC00">아이디</td>
      <td>
-        <input type = "text" name = "id" value = "abcd">
+        <input type = "text" name = "id" value = "예지예지">
      </td>
   </tr>
   <tr align = "center">

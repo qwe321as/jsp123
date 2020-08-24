@@ -1,4 +1,3 @@
--- È¸¿ø Å×ÀÌºí »ý¼º
 drop sequence mem_s ;
 
 create sequence mem_s  
@@ -18,10 +17,9 @@ create table login(
 	email varchar2(20));
 
 insert into login(no, name, id, password, email) 
-values(memseq.nextval, '¾îµå¹Î', 'admin', '1234', admin@pink.com);
+values(memseq.nextval, 'ì–´ë“œë¯¼', 'admin', '1234', 'admin@pink.com');
 commit;
 
--- Ä«Å×°í¸® Å×ÀÌºí
 drop sequence cate_s;
 drop table catego;
 
@@ -41,7 +39,6 @@ create table catego(
 );
 
 
--- Ã¥Å×ÀÌºí
 drop sequence book_s;
 create sequence book_s 
 increment by 1
@@ -56,13 +53,12 @@ create table book(
 	title varchar2(50) not null,
 	author varchar2(50),
 	publisher varchar2(300),
-	bcategory varchar2(20) not null, -- ¼±ÅÃÇÑ Ä«Å×°í¸®
+	bcategory varchar2(20) not null, 
 	bimage varchar2(30),
 	pcontents varchar2(4000),
-	bpasswd varchar2(30),
+	bpasswd varchar2(30)
 );
 
--------ÄûÁî Å×ÀÌºí
 drop sequence quiz_s;
 create sequence quiz_s 
 increment by 1
@@ -73,11 +69,37 @@ nocache;
  
 drop table quizz;
 create table quizz(
-	qnum number, -- ÁÖ¹®¹øÈ£(orderseq)
-	qcategory varchar2(20) not null, -- ¼±ÅÃÇÑ Ä«Å×°í¸®
+	qnum number, 
+	qcategory varchar2(20) not null, 
 	question varchar2(30),
 	answer varchar2(30)
 );
+
+commit ;
+
+
+drop table book_board;
+create table book_board(
+	num number not null primary key,
+	writer varchar2(10) not null,
+	password varchar2(12) not null,
+	title varchar2(20) not null,
+	content varchar2(50) not null,
+	reg_date date not null,
+	readcount int default 0,
+	ref number  default 0 not null,
+	re_step number default 0 not null,
+	re_level number default 0 not null
+);
+
+drop sequence board_seq ;
+
+create sequence board_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
 
 commit ;
 
