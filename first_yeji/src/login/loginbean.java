@@ -1,5 +1,4 @@
 package login;
-
 public class loginbean {
 	private int	no;
 	private String name;

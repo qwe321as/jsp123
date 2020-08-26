@@ -4,16 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="admin_top.jsp"%>
-<style type="text/css">
-body {
-	width: 100%;
-	text-align: center;
-}
 
-table {
-	margin: 0auto;
-}
-</style>
 <%
 	logindao dao = logindao.getInstance();
 ArrayList<loginbean> list = dao.select();
@@ -26,6 +17,7 @@ ArrayList<loginbean> list = dao.select();
 		<th>아이디</th>
 		<th>비밀번호</th>
 		<th>이메일</th>
+		<th>삭제</th>
 	</tr>
 	<%
 	for(loginbean bean: list){
@@ -36,8 +28,10 @@ ArrayList<loginbean> list = dao.select();
 		<th><%=bean.getId() %></th>
 		<th><%=bean.getPassword() %></th>
 		<th><%=bean.getEmail() %></th>
+		<td align="center"><a href="deletepro.jsp?id=<%=bean.getId() %>" >삭제</a></td>
 	</tr>
 	<%} %>
 
 
 </table>
+<%@ include file="admin_bottom.jsp"%>

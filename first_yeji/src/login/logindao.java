@@ -91,6 +91,31 @@ public class logindao {
 		return cnt;
 
 	}
+	public int delete(String id) {
+		int cnt = -1;
+		getConn();
+		String sql = "delete login where id=?";
+		try {
+			ps=con.prepareStatement(sql);
+			ps.setString(1, id);
+			cnt = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+		}finally {
+			try {
+				if(ps!=null)
+					ps.close();
+				if(rs!=null)
+					rs.close();
+				if(con!=null)
+					con.close();
+			} catch (SQLException e) {
+			}
+		}
+		
+		return cnt;
+		
+	}
 	public loginbean getMemberInfo(String id1, String password1) {
 		loginbean bean =null;
 		getConn();
@@ -197,6 +222,5 @@ public class logindao {
 		}
 		return list;
 	}
-
 
 }

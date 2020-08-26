@@ -45,7 +45,7 @@ transform: translate(-50%,-50%);
 						ID
 					</span>
 					<div class="wrap-input100 validate-input m-b-36" data-validate = "ID를 입력하세요">
-						<input class="input100" type="text" name="id" >
+						<input class="input100" type="text" name="id" placeholder="id">
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -54,7 +54,7 @@ transform: translate(-50%,-50%);
 					</span>
 					<div class="wrap-input100 validate-input m-b-12" data-validate = "Password를 입력하세요">
 
-						<input class="input100" type="password" name="password" >
+						<input class="input100" type="password" name="password" placeholder="password">
 						<span class="focus-input100"></span>
 					</div>
 					

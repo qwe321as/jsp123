@@ -1,3 +1,5 @@
+<%@page import="thron.throndao"%>
+<%@page import="thron.thronbean"%>
 <%@page import="book.bookbean"%>
 <%@page import="board.boardDao"%>
 <%@page import="board.BoardBean"%>
@@ -36,10 +38,12 @@ table {
 		list = dao2.getArticles(startRow, endRow);
 	}
 	number = count-(currentPage-1)*pageSize;
+	throndao dao = throndao.getInstance();
+	thronbean bean1 = dao.selectone(1);
 	%>
 	<h1>독서토론</h1>
-<h3> 글목록(전체글 : <%=count%>)</h3>
-
+<%if(bean1.equals(null)){%><h3>토론 주제 없음</h3>
+<%}else{ %> <h3><%=bean1.getSubject()%></h3>
 <table border="1" width="800" align="center" cellspacing="0">
 	<tr>
 		<td align="right" colspan="5"><a href="writeform.jsp">글쓰기</a></td>
@@ -91,7 +95,7 @@ table {
 	<td align="center"><%=bean.getReadcount()%></td>
 </tr>
 <%
-		}
+		}}
 	%>
 </table>
 <%} 

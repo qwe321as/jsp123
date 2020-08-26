@@ -1,13 +1,12 @@
+<%@page import="readbook.readDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="board.BoardBean"%>
-<%@page import="board.boardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../main_top.jsp"%>
-<jsp:useBean id="bean" class="board.BoardBean" />
+<jsp:useBean id="bean" class="readbook.readBean" />
 <%
 request.setCharacterEncoding("UTF-8");
-boardDao dao = boardDao.getInstance();
+readDao dao = readDao.getInstance();
 int num = Integer.parseInt(request.getParameter("num"));
 int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -41,7 +40,9 @@ margin:0auto;
 	</tr>
 	<tr>
 		<th>글제목</th>
-		<td colspan="3"><%=bean.getTitle() %></td>
+		<td colspan="1"><%=bean.getTitle() %></td>
+		<th>책</th>
+		<td colspan="1"><%=bean.getBook() %></td>
 	</tr>
 	<tr>
 		<th>글내용</th>
@@ -51,7 +52,6 @@ margin:0auto;
 		<td colspan="4"  width="125" align="right" >
 			<input type="button" value="글수정" onclick="location='updateForm.jsp?num=<%=bean.getNum()%>&pageNum=<%=pageNum%>'"> 
 			<input type="button" value="글삭제" onclick="location='deleteForm.jsp?num=<%=bean.getNum()%>&pageNum=<%=pageNum%>'"> 
-			<input type="button" value="답글쓰기" onclick="location='replyForm.jsp?ref=<%=bean.getRef()%>&re_step=<%=bean.getRe_step()%>&re_level=<%=bean.getRe_level()%>'"> 
 			<input type="button" value="글목록" onclick="location='board_main.jsp?pageNum=<%=pageNum%>'">
 			</td>
 	</tr>

@@ -53,10 +53,9 @@ create table book(
 	title varchar2(50) not null,
 	author varchar2(50),
 	publisher varchar2(300),
-	bcategory varchar2(20) not null, 
+	genre varchar2(20) not null, 
 	bimage varchar2(30),
-	pcontents varchar2(4000),
-	bpasswd varchar2(30)
+	bcontents varchar2(4000)
 );
 
 drop sequence quiz_s;
@@ -70,9 +69,26 @@ nocache;
 drop table quizz;
 create table quizz(
 	qnum number, 
-	qcategory varchar2(20) not null, 
-	question varchar2(30),
-	answer varchar2(30)
+	book varchar2(30),
+	question varchar2(1000),
+	answer varchar2(1000)
+);
+
+commit ;
+
+drop sequence thoron_s;
+create sequence thoron_s 
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+ 
+drop table thoron;
+create table thoron(
+	num number, 
+	subject varchar2(3000) not null,
+	genre varchar2(300) not null
 );
 
 commit ;
@@ -81,10 +97,10 @@ commit ;
 drop table book_board;
 create table book_board(
 	num number not null primary key,
-	writer varchar2(10) not null,
-	password varchar2(12) not null,
-	title varchar2(20) not null,
-	content varchar2(50) not null,
+	writer varchar2(30) not null,
+	password varchar2(20) not null,
+	title varchar2(100) not null,
+	content varchar2(3000) not null,
 	reg_date date not null,
 	readcount int default 0,
 	ref number  default 0 not null,
@@ -102,6 +118,52 @@ maxvalue 10000
 nocache;
 
 commit ;
+drop table read_book;
+create table read_book(
+	num number not null primary key,
+	writer varchar2(50) not null,
+	password varchar2(30) not null,
+	title varchar2(50) not null,
+	content varchar2(3000) not null,
+	book varchar2(3000) not null,
+	reg_date date not null,
+	readcount int default 0,
+	ref number  default 0 not null,
+	re_step number default 0 not null,
+	re_level number default 0 not null
+);
+
+drop sequence read_seq ;
+
+create sequence read_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+commit ;
+
+drop table gonji;
+create table gonji(
+	num number not null primary key,
+	title varchar2(50) not null,
+	content varchar2(3000) not null,
+	reg_date date not null,
+	writer varchar2(50) not null
+);
+
+drop sequence gonji_s ;
+
+create sequence gonji_s
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+commit ;
+
 
 
 

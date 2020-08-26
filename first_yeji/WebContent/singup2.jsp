@@ -64,7 +64,7 @@ top: 280px;
 						class="txt1 p-b-11"> User name </span>
 					<div class="wrap-input100 validate-input m-b-12">
 						<input class="input100" type="text" name="name"
-							placeholder="Your name"> <span class="focus-input100"></span>
+							placeholder="your name"> <span class="focus-input100"></span>
 					</div>
 					<span class="txt1 p-b-11"> ID
 					</span>
@@ -73,11 +73,12 @@ top: 280px;
 					
 					<div class="wrap-input100 validate-input m-b-12">
 						<input class="input100" type="text" name="id"
-							placeholder="Your id"> <span class="focus-input100"></span>
+							placeholder="your id"> <span class="focus-input100"></span>
 					</div>
 						<span id="idmessage" style="display: none;"></span>
 					<span class="txt1 p-b-11">
-						Password &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						Password &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 						<font color="gray" size="1">영문 소문자/숫자 조합 3~8자 </font>
 					</span>
 					<div class="wrap-input100 validate-input m-b-12">
@@ -101,11 +102,11 @@ top: 280px;
 					</div>
 
 					<div class="container-login100-form-btn">
-						<input type="submit" class="login100-form-btn" value="Singup">
+						<input type="submit" class="login100-form-btn" value="Sing up">
 
 					</div>
 					<div class="container-login100-form-btn">
-						<input type="button" class="login100-form-btn" id="back" value="back" onclick="location.href='login2.jsp'">
+						<input type="button" class="login100-form-btn" id="back" value="Back" onclick="location.href='login2.jsp'">
 
 					</div>
 

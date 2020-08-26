@@ -1,11 +1,11 @@
-<%@page import="board.boardDao"%>
+<%@page import="readbook.readDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%
 int num = Integer.parseInt(request.getParameter("num"));
 String password = request.getParameter("password");
-boardDao dao = boardDao.getInstance();
+readDao dao = readDao.getInstance();
 int cnt = dao.delete(num,password);
 System.out.println(cnt);
 if(cnt>0){

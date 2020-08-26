@@ -12,15 +12,15 @@ loginbean baen = dao.getMemberInfo(id,password);
 String msg,url="";
 if(baen!=null){
 	msg="가입한 회원입니다.";
-	String _id = baen.getId();
+	String _name = baen.getName();
 	int _no = baen.getNo();
-	if(_id.equals("admin")){
-		url=request.getContextPath()+"/admin/admin_main.jsp";
+	if(_name.equals("어드민")){
+		url=request.getContextPath()+"/admin/serch.jsp";
 	}else{
 		url=request.getContextPath()+"/main.jsp";
 		
 	}
-	session.setAttribute("memid", _id);
+	session.setAttribute("memid", _name);
 	session.setAttribute("memno",_no);
 }else{
 	url="login2.jsp";

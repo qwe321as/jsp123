@@ -1,12 +1,11 @@
-<%@page import="board.BoardBean"%>
-<%@page import="board.boardDao"%>
+<%@page import="readbook.readDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
-<jsp:useBean id="bean" class="board.BoardBean"/>
+<jsp:useBean id="bean" class="readbook.readBean"/>
 <jsp:setProperty property="*" name="bean" />
 <%
-boardDao dao = boardDao.getInstance();
+readDao dao = readDao.getInstance();
 int cnt = dao.update(bean);
 System.out.println(cnt);
 if(cnt>0){

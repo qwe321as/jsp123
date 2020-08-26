@@ -2,7 +2,7 @@ package quizz;
 
 public class quizzbean {
 	private int qnum;
-	private String qcategory;
+	private String book;
 	private String question;
 	private String answer;
 	public int getQnum() {
@@ -11,12 +11,7 @@ public class quizzbean {
 	public void setQnum(int qnum) {
 		this.qnum = qnum;
 	}
-	public String getQcategory() {
-		return qcategory;
-	}
-	public void setQcategory(String qcategory) {
-		this.qcategory = qcategory;
-	}
+	
 	public String getQuestion() {
 		return question;
 	}
@@ -29,12 +24,19 @@ public class quizzbean {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	public quizzbean(int qnum, String qcategory, String question, String answer) {
+	
+	public String getBook() {
+		return book;
+	}
+	public void setBook(String book) {
+		this.book = book;
+	}
+	public quizzbean(int qnum, String book, String question, String answer) {
 		super();
 		this.qnum = qnum;
-		this.qcategory = qcategory;
 		this.question = question;
 		this.answer = answer;
+		this.book= book;
 	}
 	public quizzbean() {
 		

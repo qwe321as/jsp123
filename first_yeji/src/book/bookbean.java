@@ -5,10 +5,16 @@ public class bookbean {
 	private String title;
 	private String author;
 	private String publisher;
-	private String bcategory;
+	private String genre;
 	private String bimage;
 	private String pcontents;
-	private String bpasswd;
+	
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
 	public int getBnum() {
 		return bnum;
 	}
@@ -33,12 +39,7 @@ public class bookbean {
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
-	public String getBcategory() {
-		return bcategory;
-	}
-	public void setBcategory(String bcategory) {
-		this.bcategory = bcategory;
-	}
+
 	public String getBimage() {
 		return bimage;
 	}
@@ -51,23 +52,17 @@ public class bookbean {
 	public void setPcontents(String pcontents) {
 		this.pcontents = pcontents;
 	}
-	public String getBpasswd() {
-		return bpasswd;
-	}
-	public void setBpasswd(String bpasswd) {
-		this.bpasswd = bpasswd;
-	}
-	public bookbean(int bnum, String title, String author, String publisher, String bcategory, String bimage,
-			String pcontents, String bpasswd) {
+
+	public bookbean(int bnum, String title, String author, String publisher, String genre, String bimage,
+			String pcontents) {
 		super();
 		this.bnum = bnum;
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
-		this.bcategory = bcategory;
+		this.genre = genre;
 		this.bimage = bimage;
 		this.pcontents = pcontents;
-		this.bpasswd = bpasswd;
 	}
 	
 	public bookbean() {

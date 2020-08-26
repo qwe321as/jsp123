@@ -9,14 +9,14 @@ int re_step=Integer.parseInt(request.getParameter("re_step"));
 int re_level=Integer.parseInt(request.getParameter("re_level"));
 %>
 <style type="text/css">
-body{
-width:100%;
-text-align: center;
-}
-table{
-margin:0auto;
+body {
+	width: 100%;
+	text-align: center;
 }
 
+table {
+	margin: 0auto;
+}
 </style>
 <h3>답글쓰기</h3>
 <form method="post" name="writeform" onsubmit="return writeSave()"

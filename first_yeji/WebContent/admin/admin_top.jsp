@@ -6,7 +6,8 @@
 	background-color: #FFEBF5;
 } */
 #divs {
-	width: 100%;
+	width: 80%;
+	align-content:center;
 	height: auto;
 }
 
@@ -21,7 +22,7 @@
 position: absolute;
 left: 50%;
 top: 50%; 
-width: 60%; 
+width: 35%; 
 height: 60%; 
 -webkit-transform: translate(-50%,-50%); 
 -ms-transform: translate(-50%,-50%); 
@@ -39,13 +40,24 @@ position: absolute;
 right: 60px;
 top:17px;
 }
+body{
+width:100%;
+text-align: center;
+}
+table{
+margin:0auto;
+width:"95%";
+}
+
 </style>
 <%
 request.setCharacterEncoding("UTF-8");
 String memid = (String)session.getAttribute("memid");
 %>
 <div class=pink>
+<a href="<%=request.getContextPath()%>/main.jsp">
 <img src="<%=request.getContextPath() %>/img/log2.png" id="title" alt="메인">
+</a>
 <span id="mem"><font size="3"><%=memid %>님</font> </span>
 <a href="<%=request.getContextPath()%>/logout.jsp">
 <img alt="로그아웃" id="logout" src="<%=request.getContextPath() %>/img/logout.png">
@@ -60,6 +72,7 @@ String memid = (String)session.getAttribute("memid");
 			<font size="5" class="line">책 추가하기</font></a></th>
 			<th><a href="<%=request.getContextPath() %>/admin/theme.jsp"><font size="5" class="line">토론 주제 추가하기</font></a></th>
 			<th><a href="<%=request.getContextPath() %>/admin/addQuiz.jsp"><font size="5" class="line">퀴즈 추가하기</font></a></th>
+			<th><a href="<%=request.getContextPath() %>/admin/addgonji.jsp"><font size="5" class="line">공지사항 추가하기</font></a></th>
 			<th><a href="<%=request.getContextPath() %>/admin/serch.jsp"><font size="5" class="line">회원관리</font></a></th>
 		</tr>
 	</table>

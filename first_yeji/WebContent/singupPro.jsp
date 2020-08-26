@@ -10,10 +10,10 @@ String msg,url="";
 int cnt = dao.insertid(bean);
 if(cnt>0){
 	msg="가입 성공";
-	url="main.jsp";
+	url="login2.jsp";
 }else{
 	msg="가입 실패";
-	url="singup.jsp";
+	url="singup2.jsp";
 }
 %>
 <script type="text/javascript">
