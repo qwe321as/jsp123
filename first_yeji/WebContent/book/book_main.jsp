@@ -1,3 +1,6 @@
+<%@page import="text.ReadFromFile"%>
+<%@page import="java.sql.Array"%>
+<%@page import="java.util.List"%>
 <%@page import="book.bookbean"%>
 <%@page import="book.bookdao"%>
 <%@page import="java.util.ArrayList"%>
@@ -14,6 +17,7 @@ request.setCharacterEncoding("UTF-8");
 body {
 	width: 100%;
 	text-align: center;
+
 }
 
 table {
@@ -21,7 +25,14 @@ table {
 }
 </style>
 <h1>책 목록</h1>
+<h3>책이미지를 누르면 미리보기가 가능합니다.</h3>
+<h5>txt파일을 누르면 책내용을 읽을 수 있습니다.</h5>
 <table align="center">
+<TR>
+<td>
+
+</td>
+</tr>
 <tr>
 	<%
 			if (list.size() == 0) {
@@ -34,14 +45,16 @@ table {
 		%><td>
 	<table>
 	    <tr><td align="center">
-		<img src="<%=request.getContextPath()%>/admin/book/<%=bean.getBimage()%>"width="200px" height="250px" /> 
+		
+	<a href="readbook_.jsp?bnum=<%=bean.getBnum()%>">
+	<img src="<%=request.getContextPath()%>/admin/book/<%=bean.getBimage()%>"width="200px" height="250px" /> </a>
 		</td></tr>
 		<tr> <td align="center"> <%=bean.getTitle()%> </td></tr>
 		<tr><td align="center"> <%=bean.getAuthor()%> </td></tr>
 		<tr><td align="center">	<%=bean.getPublisher()%> </td></tr>
 		<tr><td align="center">	<%=bean.getGenre()%> </td></tr>
-		<tr><td align="center">	<a href="<%=request.getContextPath()%>/admin/book/<%=bean.getPcontents()%>
-		 "onclick="window.open(this.href,'txt','width=100,height=800');return false;">
+		<tr><td align="center">	<a href="<%=request.getContextPath()%>/admin/book/<%=bean.getPcontents()%>"
+		onclick="window.open(this.href,'txt','width=500,height=500');return false;">
 			<%=bean.getPcontents()%></a></td></tr>
 	</table></td>
 		<%
@@ -50,4 +63,5 @@ table {
  %>
  </tr>
 </table>
+
 <%@ include file="main_bottom.jsp"%>

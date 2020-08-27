@@ -60,7 +60,7 @@ String memid = (String)session.getAttribute("memid");
 			<font size="5" class="line">책 읽기</font></a></th>
 			<th><a href="<%=request.getContextPath() %>/Report/board_main.jsp"><font size="5" class="line">독후감</font></a></th>
 			<th><a href="<%=request.getContextPath() %>/board/board_main.jsp"><font size="5" class="line">독서토론</font></a></th>
-			<th><a href="<%=request.getContextPath() %>/Quiz.jsp"><font size="5" class="line">퀴즈</font></a></th>
+			<th><a href="<%=request.getContextPath() %>/Quiz/Quiz_main.jsp"><font size="5" class="line">퀴즈</font></a></th>
 			<th><a href="<%=request.getContextPath() %>/gongi/board_main.jsp"><font size="5" class="line">공지사항</font></a></th>
 		</tr>
 	</table>

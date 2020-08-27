@@ -29,11 +29,12 @@ String fn = multi.getFilesystemName(file);
 System.out.println(file);
 System.out.println(fn);
 String org = multi.getOriginalFileName(file);
-System.out.println(org);
+System.out.println("org="+org);
 String fullpath = requestFolder + "/"+fn;
 %>
 
-<!-- C:\JSP_yeji\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\18_Upload
+<!-- 
+C:\JSP_yeji\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\18_Upload
 new DefaultFileRenamePolicy() 이거쓰면 이름이 같은 사진에 1,2,3 이 붙이면서 저장된다.
 
  -->

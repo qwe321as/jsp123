@@ -222,5 +222,4 @@ public class logindao {
 		}
 		return list;
 	}
-
-}
+	}
